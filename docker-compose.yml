@@ -1,0 +1,13 @@
+services:
+  cybertruckai-pages:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cybertruckai-pages
+    restart: unless-stopped
+    ports:
+      - "8667:8667"
+    environment:
+      NODE_ENV: production
+      PORT: 8667
+      HOSTNAME: 0.0.0.0
