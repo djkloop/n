@@ -112,7 +112,7 @@ export function TutorialSection() {
                     activeTab === tutorial.id ? "shadow-sm" : "hover:text-[var(--foreground)]"
                   }`}
                   style={activeTab === tutorial.id
-                    ? { backgroundColor: 'var(--background-raised)', color: 'var(--foreground)', boxShadow: '0 1px 3px oklch(0% 0 0 / 0.1)' }
+                    ? { backgroundColor: 'var(--background-raised)', color: 'var(--foreground)', boxShadow: 'var(--shadow-soft)' }
                     : { color: 'var(--foreground-muted)' }
                   }
                 >
@@ -155,7 +155,7 @@ export function TutorialSection() {
                                   activePlatform === platform.id ? "" : "hover:opacity-80"
                                 }`}
                                 style={activePlatform === platform.id
-                                  ? { backgroundColor: 'var(--background-raised)', color: 'var(--foreground)', boxShadow: '0 1px 2px oklch(0% 0 0 / 0.1)' }
+                                  ? { backgroundColor: 'var(--background-raised)', color: 'var(--foreground)', boxShadow: 'var(--shadow-soft)' }
                                   : { color: 'var(--foreground-muted)' }
                                 }
                               >
@@ -164,7 +164,7 @@ export function TutorialSection() {
                             ))}
                           </div>
 
-                          <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md mb-4" style={{ backgroundColor: 'oklch(6% 0.01 265)', border: '1px solid var(--border)' }}>
+                          <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md mb-4" style={{ backgroundColor: 'var(--surface-code)', border: '1px solid var(--border)' }}>
                             <div className="absolute top-2 right-2 z-10">
                               <button
                                 onClick={() => copyToClipboard(getTerminalCommand(activePlatform), 2)}
@@ -180,7 +180,7 @@ export function TutorialSection() {
                           </div>
 
                           <p className="text-sm mb-3" style={{ color: 'var(--foreground-muted)' }}>配置文件位置</p>
-                          <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md" style={{ backgroundColor: 'oklch(6% 0.01 265)', border: '1px solid var(--border)' }}>
+                          <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md" style={{ backgroundColor: 'var(--surface-code)', border: '1px solid var(--border)' }}>
                             <div className="absolute top-2 right-2 z-10">
                               <button
                                 onClick={() => copyToClipboard(getPlatformPath(activePlatform), 2.1)}
@@ -202,7 +202,7 @@ export function TutorialSection() {
                         <div className="flex-1 min-w-0">
                           <h3 className="text-base font-semibold mb-2">写入配置</h3>
                           <p className="text-sm mb-3" style={{ color: 'var(--foreground-muted)' }}>将以下内容粘贴到 settings.json</p>
-                          <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md" style={{ backgroundColor: 'oklch(6% 0.01 265)', border: '1px solid var(--border)' }}>
+                          <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md" style={{ backgroundColor: 'var(--surface-code)', border: '1px solid var(--border)' }}>
                             <div className="absolute top-2 right-2 z-10">
                               <button
                                 onClick={() => copyToClipboard(`{\n  "env": {\n    "ANTHROPIC_AUTH_TOKEN": "你的API Key",\n    "ANTHROPIC_BASE_URL": "https://cybertruckai.top/v1"\n  }\n}`, 3)}
@@ -264,7 +264,7 @@ export function TutorialSection() {
                                   activePlatform === platform.id ? "" : "hover:opacity-80"
                                 }`}
                                 style={activePlatform === platform.id
-                                  ? { backgroundColor: 'var(--background-raised)', color: 'var(--foreground)', boxShadow: '0 1px 2px oklch(0% 0 0 / 0.1)' }
+                                  ? { backgroundColor: 'var(--background-raised)', color: 'var(--foreground)', boxShadow: 'var(--shadow-soft)' }
                                   : { color: 'var(--foreground-muted)' }
                                 }
                               >
@@ -273,7 +273,7 @@ export function TutorialSection() {
                             ))}
                           </div>
 
-                          <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md mb-4" style={{ backgroundColor: 'oklch(6% 0.01 265)', border: '1px solid var(--border)' }}>
+                          <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md mb-4" style={{ backgroundColor: 'var(--surface-code)', border: '1px solid var(--border)' }}>
                             <div className="absolute top-2 right-2 z-10">
                               <button
                                 onClick={() => copyToClipboard(getCodexTerminalCommand(activePlatform), 2)}
@@ -290,7 +290,7 @@ export function TutorialSection() {
                           </div>
 
                           <p className="text-sm mb-3" style={{ color: 'var(--foreground-muted)' }}>配置文件位置</p>
-                          <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md" style={{ backgroundColor: 'oklch(6% 0.01 265)', border: '1px solid var(--border)' }}>
+                          <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md" style={{ backgroundColor: 'var(--surface-code)', border: '1px solid var(--border)' }}>
                             <div className="absolute top-2 right-2 z-10">
                               <button
                                 onClick={() => copyToClipboard(getCodexPath(activePlatform), 2.1)}
@@ -315,7 +315,7 @@ export function TutorialSection() {
 
                           <div className="mb-4">
                             <p className="text-xs font-medium mb-2" style={{ color: 'var(--foreground)' }}>config.toml</p>
-                            <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md" style={{ backgroundColor: 'oklch(6% 0.01 265)', border: '1px solid var(--border)' }}>
+                            <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md" style={{ backgroundColor: 'var(--surface-code)', border: '1px solid var(--border)' }}>
                               <div className="absolute top-2 right-2 z-10">
                                 <button
                                   onClick={() => copyToClipboard(`approval_policy = "never"
@@ -365,7 +365,7 @@ requires_openai_auth = true`}
 
                           <div>
                             <p className="text-xs font-medium mb-2" style={{ color: 'var(--foreground)' }}>auth.json</p>
-                            <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md" style={{ backgroundColor: 'oklch(6% 0.01 265)', border: '1px solid var(--border)' }}>
+                            <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md" style={{ backgroundColor: 'var(--surface-code)', border: '1px solid var(--border)' }}>
                               <div className="absolute top-2 right-2 z-10">
                                 <button
                                   onClick={() => copyToClipboard(`{
@@ -427,7 +427,7 @@ requires_openai_auth = true`}
                                   activePlatform === platform.id ? "" : "hover:opacity-80"
                                 }`}
                                 style={activePlatform === platform.id
-                                  ? { backgroundColor: 'var(--background-raised)', color: 'var(--foreground)', boxShadow: '0 1px 2px oklch(0% 0 0 / 0.1)' }
+                                  ? { backgroundColor: 'var(--background-raised)', color: 'var(--foreground)', boxShadow: 'var(--shadow-soft)' }
                                   : { color: 'var(--foreground-muted)' }
                                 }
                               >
@@ -436,7 +436,7 @@ requires_openai_auth = true`}
                             ))}
                           </div>
 
-                          <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md mb-4" style={{ backgroundColor: 'oklch(6% 0.01 265)', border: '1px solid var(--border)' }}>
+                          <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md mb-4" style={{ backgroundColor: 'var(--surface-code)', border: '1px solid var(--border)' }}>
                             <div className="absolute top-2 right-2 z-10">
                               <button
                                 onClick={() => copyToClipboard(activePlatform === "windows" ? "mkdir %USERPROFILE%\\.gemini" : "mkdir -p ~/.gemini", 2)}
@@ -452,7 +452,7 @@ requires_openai_auth = true`}
                           </div>
 
                           <p className="text-sm mb-3" style={{ color: 'var(--foreground-muted)' }}>配置位置</p>
-                          <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md" style={{ backgroundColor: 'oklch(6% 0.01 265)', border: '1px solid var(--border)' }}>
+                          <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md" style={{ backgroundColor: 'var(--surface-code)', border: '1px solid var(--border)' }}>
                             <div className="absolute top-2 right-2 z-10">
                               <button
                                 onClick={() => copyToClipboard(activePlatform === "windows" ? "%USERPROFILE%\\.gemini" : "~/.gemini", 2.1)}
@@ -477,7 +477,7 @@ requires_openai_auth = true`}
 
                           <div className="mb-4">
                             <p className="text-xs font-medium mb-2" style={{ color: 'var(--foreground)' }}>.env</p>
-                            <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md" style={{ backgroundColor: 'oklch(6% 0.01 265)', border: '1px solid var(--border)' }}>
+                            <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md" style={{ backgroundColor: 'var(--surface-code)', border: '1px solid var(--border)' }}>
                               <div className="absolute top-2 right-2 z-10">
                                 <button
                                   onClick={() => copyToClipboard(`GOOGLE_GEMINI_BASE_URL=https://cybertruckai.top/v1
@@ -499,7 +499,7 @@ GEMINI_MODEL=gemini-3-pro-preview`}
 
                           <div>
                             <p className="text-xs font-medium mb-2" style={{ color: 'var(--foreground)' }}>settings.json</p>
-                            <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md" style={{ backgroundColor: 'oklch(6% 0.01 265)', border: '1px solid var(--border)' }}>
+                            <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md" style={{ backgroundColor: 'var(--surface-code)', border: '1px solid var(--border)' }}>
                               <div className="absolute top-2 right-2 z-10">
                                 <button
                                   onClick={() => copyToClipboard(`{
@@ -575,7 +575,7 @@ GEMINI_MODEL=gemini-3-pro-preview`}
                                   activePlatform === platform.id ? "" : "hover:opacity-80"
                                 }`}
                                 style={activePlatform === platform.id
-                                  ? { backgroundColor: 'var(--background-raised)', color: 'var(--foreground)', boxShadow: '0 1px 2px oklch(0% 0 0 / 0.1)' }
+                                  ? { backgroundColor: 'var(--background-raised)', color: 'var(--foreground)', boxShadow: 'var(--shadow-soft)' }
                                   : { color: 'var(--foreground-muted)' }
                                 }
                               >
@@ -585,7 +585,7 @@ GEMINI_MODEL=gemini-3-pro-preview`}
                           </div>
 
                           <p className="text-sm mb-3" style={{ color: 'var(--foreground-muted)' }}>配置文件位置</p>
-                          <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md mb-4" style={{ backgroundColor: 'oklch(6% 0.01 265)', border: '1px solid var(--border)' }}>
+                          <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md mb-4" style={{ backgroundColor: 'var(--surface-code)', border: '1px solid var(--border)' }}>
                             <div className="absolute top-2 right-2 z-10">
                               <button
                                 onClick={() => copyToClipboard(
@@ -616,7 +616,7 @@ GEMINI_MODEL=gemini-3-pro-preview`}
                           <h3 className="text-base font-semibold mb-2">写入配置</h3>
                           <p className="text-sm mb-3" style={{ color: 'var(--foreground-muted)' }}>创建 opencode.json 配置文件</p>
 
-                          <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md mb-4" style={{ backgroundColor: 'oklch(6% 0.01 265)', border: '1px solid var(--border)' }}>
+                          <div className="relative group/card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md mb-4" style={{ backgroundColor: 'var(--surface-code)', border: '1px solid var(--border)' }}>
                             <div className="absolute top-2 right-2 z-10">
                               <button
                                 onClick={() => copyToClipboard(`{

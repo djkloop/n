@@ -258,7 +258,7 @@ export function FeaturesSection() {
               ref={chipRef}
               className="relative inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border font-medium text-xs tracking-[0.05em] uppercase"
               style={{
-                background: 'oklch(14% 0.01 265)',
+                background: 'var(--background-raised)',
                 borderColor: 'var(--border)',
                 color: 'var(--foreground-muted)',
               }}

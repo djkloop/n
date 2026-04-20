@@ -11,6 +11,49 @@
   --accent-secondary: oklch(60% 0.14 280);
   --border: oklch(22% 0.01 265);
   --border-light: oklch(30% 0.01 265);
+  --surface-panel-soft: linear-gradient(180deg, oklch(18% 0.01 265 / 0.68), oklch(14% 0.01 265 / 0.78));
+  --surface-panel-strong: linear-gradient(180deg, oklch(14% 0.01 265 / 0.96), oklch(10% 0.01 265 / 0.99));
+  --surface-panel-muted: oklch(18% 0.01 265 / 0.72);
+  --surface-panel-active: oklch(18% 0.01 265 / 0.9);
+  --surface-panel-subtle: oklch(18% 0.01 265 / 0.58);
+  --surface-code: oklch(6% 0.01 265);
+  --surface-code-strong: oklch(12% 0.01 265 / 0.94);
+  --surface-hover: oklch(20% 0.01 265);
+  --panel-border-soft: oklch(100% 0 0 / 0.04);
+  --panel-border-medium: oklch(100% 0 0 / 0.06);
+  --panel-border-strong: oklch(100% 0 0 / 0.08);
+  --panel-fill-soft: oklch(100% 0 0 / 0.08);
+  --shadow-soft: 0 1px 3px oklch(0% 0 0 / 0.1);
+  --shadow-panel: 0 24px 80px oklch(0% 0 0 / 0.22);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: oklch(98% 0.004 265);
+    --background-raised: oklch(100% 0 0);
+    --foreground: oklch(21% 0.014 265);
+    --foreground-muted: oklch(50% 0.016 265);
+    --primary: oklch(58% 0.18 145);
+    --primary-hover: oklch(52% 0.18 145);
+    --accent: oklch(56% 0.14 250);
+    --accent-secondary: oklch(58% 0.14 280);
+    --border: oklch(89% 0.006 265);
+    --border-light: oklch(82% 0.008 265);
+    --surface-panel-soft: linear-gradient(180deg, oklch(99% 0.002 265 / 0.9), oklch(96% 0.004 265 / 0.94));
+    --surface-panel-strong: linear-gradient(180deg, oklch(100% 0 0 / 0.98), oklch(97% 0.004 265 / 0.98));
+    --surface-panel-muted: oklch(96% 0.004 265 / 0.9);
+    --surface-panel-active: oklch(94% 0.006 265 / 0.96);
+    --surface-panel-subtle: oklch(97% 0.004 265 / 0.82);
+    --surface-code: oklch(96% 0.004 265);
+    --surface-code-strong: oklch(98% 0.003 265 / 0.98);
+    --surface-hover: oklch(94% 0.006 265);
+    --panel-border-soft: oklch(26% 0.01 265 / 0.08);
+    --panel-border-medium: oklch(26% 0.01 265 / 0.1);
+    --panel-border-strong: oklch(26% 0.01 265 / 0.14);
+    --panel-fill-soft: oklch(22% 0.01 265 / 0.08);
+    --shadow-soft: 0 1px 3px oklch(20% 0.02 265 / 0.08);
+    --shadow-panel: 0 24px 80px oklch(20% 0.02 265 / 0.12);
+  }
 }
 
 * {
@@ -19,6 +62,13 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  html {
+    color-scheme: light;
+  }
 }
 
 body {

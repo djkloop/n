@@ -13,11 +13,11 @@ function HeroFlowSkeleton() {
             key={item}
             className="flex w-[164px] items-center gap-2.5 rounded-[22px] border px-2.5 py-2.5"
             style={{
-              borderColor: "oklch(100% 0 0 / 0.04)",
-              background: "linear-gradient(180deg, oklch(18% 0.01 265 / 0.68), oklch(14% 0.01 265 / 0.78))",
+              borderColor: "var(--panel-border-soft)",
+              background: "var(--surface-panel-soft)",
             }}
           >
-            <div className="h-9 w-9 rounded-[13px] border" style={{ borderColor: "oklch(100% 0 0 / 0.06)" }} />
+            <div className="h-9 w-9 rounded-[13px] border" style={{ borderColor: "var(--panel-border-medium)" }} />
             <div className="flex-1 space-y-2">
               <div className="h-3 w-16 rounded-full bg-[oklch(100%_0_0_/0.08)]" />
               <div className="h-2.5 w-12 rounded-full bg-[oklch(100%_0_0_/0.06)]" />
@@ -30,8 +30,8 @@ function HeroFlowSkeleton() {
         <div
           className="w-[138px] rounded-[34px] border px-4 py-5"
           style={{
-            borderColor: "oklch(100% 0 0 / 0.08)",
-            background: "linear-gradient(180deg, oklch(14% 0.01 265 / 0.96), oklch(10% 0.01 265 / 0.99))",
+            borderColor: "var(--panel-border-strong)",
+            background: "var(--surface-panel-strong)",
           }}
         >
           <div className="mx-auto mb-4 h-1.5 w-12 rounded-full bg-[oklch(100%_0_0_/0.08)]" />
@@ -39,7 +39,7 @@ function HeroFlowSkeleton() {
           <div className="mx-auto mt-3 h-4 w-16 rounded-full bg-[oklch(100%_0_0_/0.12)]" />
           <div className="mt-5 space-y-1.5">
             {[0, 1, 2, 3, 4].map((item) => (
-              <div key={item} className="h-8 rounded-[16px] border bg-[oklch(18%_0.01_265_/0.58)]" style={{ borderColor: "oklch(100% 0 0 / 0.08)" }} />
+              <div key={item} className="h-8 rounded-[16px] border" style={{ borderColor: "var(--panel-border-strong)", background: "var(--surface-panel-subtle)" }} />
             ))}
           </div>
         </div>
@@ -49,19 +49,19 @@ function HeroFlowSkeleton() {
         <div
           className="w-[226px] rounded-[26px] border px-4 py-3.5"
           style={{
-            borderColor: "oklch(100% 0 0 / 0.08)",
-            background: "linear-gradient(180deg, oklch(14% 0.01 265 / 0.96), oklch(10% 0.01 265 / 0.99))",
+            borderColor: "var(--panel-border-strong)",
+            background: "var(--surface-panel-strong)",
           }}
         >
-          <div className="mb-3 h-16 rounded-[18px] border bg-[oklch(18%_0.01_265_/0.72)]" style={{ borderColor: "oklch(100% 0 0 / 0.08)" }} />
-          <div className="rounded-[20px] border px-3 py-2.5" style={{ borderColor: "oklch(100% 0 0 / 0.08)", background: "oklch(12% 0.01 265 / 0.94)" }}>
+          <div className="mb-3 h-16 rounded-[18px] border" style={{ borderColor: "var(--panel-border-strong)", background: "var(--surface-panel-muted)" }} />
+          <div className="rounded-[20px] border px-3 py-2.5" style={{ borderColor: "var(--panel-border-strong)", background: "var(--surface-code-strong)" }}>
             {[0, 1, 2, 3, 4].map((item) => (
               <div key={item} className="mb-2 h-3 rounded-full bg-[oklch(100%_0_0_/0.08)] last:mb-0" />
             ))}
           </div>
           <div className="mt-2.5 grid grid-cols-2 gap-2">
-            <div className="h-14 rounded-[14px] border bg-[oklch(18%_0.01_265_/0.72)]" style={{ borderColor: "oklch(100% 0 0 / 0.08)" }} />
-            <div className="h-14 rounded-[14px] border bg-[oklch(18%_0.01_265_/0.72)]" style={{ borderColor: "oklch(100% 0 0 / 0.08)" }} />
+            <div className="h-14 rounded-[14px] border" style={{ borderColor: "var(--panel-border-strong)", background: "var(--surface-panel-muted)" }} />
+            <div className="h-14 rounded-[14px] border" style={{ borderColor: "var(--panel-border-strong)", background: "var(--surface-panel-muted)" }} />
           </div>
         </div>
       </div>
@@ -187,7 +187,7 @@ export function HeroSection() {
                 style={{ borderColor: "var(--border)", color: "var(--foreground-muted)" }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = "var(--border-light)";
-                  e.currentTarget.style.backgroundColor = "oklch(20% 0.01 265)";
+                  e.currentTarget.style.backgroundColor = "var(--surface-hover)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = "var(--border)";

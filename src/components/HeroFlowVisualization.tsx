@@ -371,7 +371,7 @@ export function HeroFlowVisualization() {
       <svg className="pointer-events-none absolute inset-0 z-0" viewBox="0 0 560 320" fill="none" aria-hidden="true">
         <path
           d={leftPath.map((point, index) => `${index === 0 ? "M" : "L"}${point.x.toFixed(1)} ${point.y.toFixed(1)}`).join(" ")}
-          stroke="color-mix(in oklch, var(--primary) 12%, oklch(100% 0 0 / 0.10))"
+          stroke="color-mix(in oklch, var(--primary) 12%, var(--panel-fill-soft))"
           strokeWidth="1.4"
           strokeLinecap="round"
           fill="none"
@@ -379,7 +379,7 @@ export function HeroFlowVisualization() {
         />
         <path
           d={rightPath.map((point, index) => `${index === 0 ? "M" : "L"}${point.x.toFixed(1)} ${point.y.toFixed(1)}`).join(" ")}
-          stroke="color-mix(in oklch, var(--primary) 12%, oklch(100% 0 0 / 0.10))"
+          stroke="color-mix(in oklch, var(--primary) 12%, var(--panel-fill-soft))"
           strokeWidth="1.4"
           strokeLinecap="round"
           fill="none"
@@ -444,10 +444,10 @@ export function HeroFlowVisualization() {
               }}
               className="flex w-[164px] items-center gap-2.5 rounded-[22px] border px-2.5 py-2.5"
               style={{
-                borderColor: active ? activeColor.line : "oklch(100% 0 0 / 0.04)",
+                borderColor: active ? activeColor.line : "var(--panel-border-soft)",
                 background: active
-                  ? "linear-gradient(180deg, oklch(18% 0.01 265 / 0.96), oklch(14% 0.01 265 / 0.98))"
-                  : "linear-gradient(180deg, oklch(18% 0.01 265 / 0.68), oklch(14% 0.01 265 / 0.78))",
+                  ? "var(--surface-panel-strong)"
+                  : "var(--surface-panel-soft)",
                 boxShadow: active ? `0 0 24px ${activeColor.glow}` : "none",
               }}
               animate={{ opacity: active ? 1 : 0.38, scale: active ? 1 : 0.97 }}
@@ -455,7 +455,7 @@ export function HeroFlowVisualization() {
             >
               <div
                 className="flex h-9 w-9 items-center justify-center rounded-[13px] border"
-                style={{ borderColor: active ? activeColor.line : "oklch(100% 0 0 / 0.06)", color: active ? activeColor.line : "var(--foreground-muted)" }}
+                style={{ borderColor: active ? activeColor.line : "var(--panel-border-medium)", color: active ? activeColor.line : "var(--foreground-muted)" }}
               >
                 <Icon className="h-[18px] w-[18px]" />
               </div>
@@ -476,14 +476,14 @@ export function HeroFlowVisualization() {
         <GlowCard
           className="w-[138px] rounded-[34px] px-4 py-5"
           style={{
-            background: "linear-gradient(180deg, oklch(14% 0.01 265 / 0.96), oklch(10% 0.01 265 / 0.99))",
-            border: "1px solid oklch(100% 0 0 / 0.08)",
-            boxShadow: "0 24px 80px oklch(0% 0 0 / 0.22)",
+            background: "var(--surface-panel-strong)",
+            border: "1px solid var(--panel-border-strong)",
+            boxShadow: "var(--shadow-panel)",
           }}
         >
           <motion.div
             className="mx-auto mb-4 h-1.5 w-12 rounded-full"
-            style={{ background: "oklch(100% 0 0 / 0.08)" }}
+            style={{ background: "var(--panel-fill-soft)" }}
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
           />
@@ -506,8 +506,8 @@ export function HeroFlowVisualization() {
                   }}
                   className="relative truncate overflow-hidden rounded-[16px] border px-3 py-1.5 text-[10px] font-mono"
                   style={{
-                    borderColor: active ? activeColor.line : "oklch(100% 0 0 / 0.08)",
-                    background: active ? "oklch(18% 0.01 265 / 0.9)" : "oklch(18% 0.01 265 / 0.58)",
+                    borderColor: active ? activeColor.line : "var(--panel-border-strong)",
+                    background: active ? "var(--surface-panel-active)" : "var(--surface-panel-subtle)",
                     color: active ? "var(--foreground)" : "var(--foreground-muted)",
                   }}
                   animate={{ opacity: active ? 1 : 0.32 }}
@@ -532,16 +532,16 @@ export function HeroFlowVisualization() {
         <GlowCard
           className="w-[226px] rounded-[26px] px-4 py-3.5"
           style={{
-            background: "linear-gradient(180deg, oklch(14% 0.01 265 / 0.96), oklch(10% 0.01 265 / 0.99))",
+            background: "var(--surface-panel-strong)",
             border: `1px solid ${activeColor.glow}`,
-            boxShadow: `0 24px 80px oklch(0% 0 0 / 0.22), 0 0 40px ${activeColor.glow}`,
+            boxShadow: `var(--shadow-panel), 0 0 40px ${activeColor.glow}`,
           }}
         >
           <CardBloomEffect isActive={true} isBlooming={isResponseBlooming} color={{ main: activeColor.line, glow: activeColor.glow }} />
           <motion.div
             ref={responseBadgeRef}
             className="mb-3 flex items-center gap-2.5 rounded-[18px] border px-3 py-2"
-            style={{ borderColor: "oklch(100% 0 0 / 0.08)", background: "oklch(18% 0.01 265 / 0.72)" }}
+            style={{ borderColor: "var(--panel-border-strong)", background: "var(--surface-panel-muted)" }}
             animate={{ boxShadow: [`0 0 0 ${activeColor.glow}`, `0 0 18px ${activeColor.glow}`, `0 0 0 ${activeColor.glow}`] }}
             transition={{ duration: 2.6, repeat: Infinity, ease: [0.22, 1, 0.36, 1] }}
           >
@@ -562,7 +562,7 @@ export function HeroFlowVisualization() {
 
           <motion.div
             className="rounded-[20px] border px-3 py-2.5 font-mono text-[10px] leading-5"
-            style={{ borderColor: "oklch(100% 0 0 / 0.08)", background: "oklch(12% 0.01 265 / 0.94)" }}
+            style={{ borderColor: "var(--panel-border-strong)", background: "var(--surface-code-strong)" }}
             key={activeItem.endpoint}
             initial={{ opacity: 0.55, y: 6, scale: 0.985 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -589,7 +589,7 @@ export function HeroFlowVisualization() {
           </motion.div>
 
           <div className="mt-2.5 grid grid-cols-2 gap-2">
-            <div className="rounded-[14px] border px-2.5 py-2" style={{ borderColor: "oklch(100% 0 0 / 0.08)", background: "oklch(18% 0.01 265 / 0.72)" }}>
+            <div className="rounded-[14px] border px-2.5 py-2" style={{ borderColor: "var(--panel-border-strong)", background: "var(--surface-panel-muted)" }}>
               <div className="text-[9px] uppercase tracking-[0.18em]" style={{ color: "var(--foreground-muted)" }}>
                 provider
               </div>
@@ -597,7 +597,7 @@ export function HeroFlowVisualization() {
                 {activeItem.provider.label}
               </div>
             </div>
-            <div className="rounded-[14px] border px-2.5 py-2" style={{ borderColor: "oklch(100% 0 0 / 0.08)", background: "oklch(18% 0.01 265 / 0.72)" }}>
+            <div className="rounded-[14px] border px-2.5 py-2" style={{ borderColor: "var(--panel-border-strong)", background: "var(--surface-panel-muted)" }}>
               <div className="text-[9px] uppercase tracking-[0.18em]" style={{ color: "var(--foreground-muted)" }}>
                 status
               </div>
