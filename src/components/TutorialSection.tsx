@@ -7,6 +7,7 @@ export function TutorialSection() {
   const [activeTab, setActiveTab] = useState("claude-code");
   const [activePlatform, setActivePlatform] = useState("windows");
   const [copiedStep, setCopiedStep] = useState<number | null>(null);
+  const [copyFeedback, setCopyFeedback] = useState<string | null>(null);
 
   const tutorials = [
     { id: "claude-code", name: "Claude Code" },
@@ -74,9 +75,16 @@ export function TutorialSection() {
   };
 
   const copyToClipboard = async (text: string, step: number) => {
-    await navigator.clipboard.writeText(text);
-    setCopiedStep(step);
-    setTimeout(() => setCopiedStep(null), 2000);
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedStep(step);
+      setCopyFeedback("复制成功");
+      setTimeout(() => setCopiedStep(null), 2000);
+      setTimeout(() => setCopyFeedback(null), 2000);
+    } catch {
+      setCopyFeedback("复制失败，请手动复制");
+      setTimeout(() => setCopyFeedback(null), 2500);
+    }
   };
 
   return (
@@ -320,7 +328,7 @@ export function TutorialSection() {
                                 <button
                                   onClick={() => copyToClipboard(`approval_policy = "never"
 sandbox_mode = "danger-full-access"
-model_provider = "routerteam"
+model_provider = "cybertruckai"
 model = "gpt-4o"
 model_reasoning_effort = "xhigh"
 plan_mode_reasoning_effort = "xhigh"
@@ -330,8 +338,8 @@ disable_response_storage = true
 windows_wsl_setup_acknowledged = true
 model_verbosity = "high"
 
-[model_providers.routerteam]
-name = "routerteam"
+[model_providers.cybertruckai]
+name = "cybertruckai"
 base_url = "https://cybertruckai.top/v1"
 wire_api = "responses"
 requires_openai_auth = true`, 3)}
@@ -344,7 +352,7 @@ requires_openai_auth = true`, 3)}
                               <pre className="text-xs leading-relaxed p-4 overflow-x-auto font-mono" style={{ color: 'var(--foreground-muted)' }}>
 {`approval_policy = "never"
 sandbox_mode = "danger-full-access"
-model_provider = "routerteam"
+model_provider = "cybertruckai"
 model = "gpt-4o"
 model_reasoning_effort = "xhigh"
 plan_mode_reasoning_effort = "xhigh"
@@ -354,8 +362,8 @@ disable_response_storage = true
 windows_wsl_setup_acknowledged = true
 model_verbosity = "high"
 
-[model_providers.routerteam]
-name = "routerteam"
+[model_providers.cybertruckai]
+name = "cybertruckai"
 base_url = "https://cybertruckai.top/v1"
 wire_api = "responses"
 requires_openai_auth = true`}
@@ -620,53 +628,93 @@ GEMINI_MODEL=gemini-3-pro-preview`}
                             <div className="absolute top-2 right-2 z-10">
                               <button
                                 onClick={() => copyToClipboard(`{
-  "$schema": "https://opencode.ai/config.json",
   "provider": {
-    "routerteam": {
-      "npm": "@ai-sdk/openai",
-      "name": "RouterTeam",
+    "cybertruckai": {
       "options": {
         "baseURL": "https://cybertruckai.top/v1",
         "apiKey": "替换为你的key"
       },
       "models": {
         "gpt-5.4": {
-          "attachment": true,
-          "reasoning": true,
-          "modalities": {
-            "input": ["text", "image"],
-            "output": ["text"]
-          },
+          "name": "GPT-5.4",
           "limit": {
-            "context": 1000000,
+            "context": 1050000,
             "output": 128000
           },
+          "options": {
+            "store": false
+          },
           "variants": {
-            "xhigh": {
-              "reasoningEffort": "xhigh",
-              "textVerbosity": "low",
-              "reasoningSummary": "auto"
-            },
-            "high": {
-              "reasoningEffort": "high",
-              "textVerbosity": "low",
-              "reasoningSummary": "auto"
-            },
-            "medium": {
-              "reasoningEffort": "medium",
-              "textVerbosity": "low",
-              "reasoningSummary": "auto"
-            },
-            "low": {
-              "reasoningEffort": "low",
-              "textVerbosity": "low",
-              "reasoningSummary": "auto"
-            }
+            "low": {},
+            "medium": {},
+            "high": {},
+            "xhigh": {}
+          }
+        },
+        "gpt-5.3": {
+          "name": "GPT-5.3",
+          "limit": {
+            "context": 400000,
+            "output": 128000
+          },
+          "options": {
+            "store": false
+          },
+          "variants": {
+            "low": {},
+            "medium": {},
+            "high": {},
+            "xhigh": {}
+          }
+        },
+        "gpt-5.3-codex": {
+          "name": "GPT-5.3 Codex",
+          "limit": {
+            "context": 400000,
+            "output": 128000
+          },
+          "options": {
+            "store": false
+          },
+          "variants": {
+            "low": {},
+            "medium": {},
+            "high": {},
+            "xhigh": {}
+          }
+        },
+        "gpt-5.4-mini": {
+          "name": "GPT-5.4 Mini",
+          "limit": {
+            "context": 400000,
+            "output": 128000
+          },
+          "options": {
+            "store": false
+          },
+          "variants": {
+            "low": {},
+            "medium": {},
+            "high": {},
+            "xhigh": {}
           }
         }
       }
     }
-  }
+  },
+  "agent": {
+    "build": {
+      "options": {
+        "store": false
+      }
+    },
+    "plan": {
+      "options": {
+        "store": false
+      }
+    }
+  },
+  "$schema": "https://opencode.ai/config.json"
 }`, 3)}
                                 className="opacity-0 group-hover/card:opacity-100 transition-all duration-200 px-2 py-1 text-xs rounded hover:scale-105 active:scale-95"
                                 style={{ backgroundColor: 'var(--border)', color: 'var(--foreground-muted)' }}
@@ -674,55 +722,95 @@ GEMINI_MODEL=gemini-3-pro-preview`}
                                 {copiedStep === 3 ? "✓ 已复制" : "复制"}
                               </button>
                             </div>
-                            <pre className="text-xs leading-relaxed p-4 overflow-x-auto font-mono" style={{ color: 'var(--foreground-muted)' }}>
+ <pre className="max-h-96 overflow-auto text-xs leading-relaxed p-4 pr-16 font-mono" style={{ color: 'var(--foreground-muted)' }}>
 {`{
-  "$schema": "https://opencode.ai/config.json",
-  "provider": {
-    "routerteam": {
-      "npm": "@ai-sdk/openai",
-      "name": "RouterTeam",
+"provider": {
+"cybertruckai": {
       "options": {
         "baseURL": "https://cybertruckai.top/v1",
         "apiKey": "替换为你的key"
       },
       "models": {
         "gpt-5.4": {
-          "attachment": true,
-          "reasoning": true,
-          "modalities": {
-            "input": ["text", "image"],
-            "output": ["text"]
-          },
+          "name": "GPT-5.4",
           "limit": {
-            "context": 1000000,
+            "context": 1050000,
             "output": 128000
           },
+          "options": {
+            "store": false
+          },
           "variants": {
-            "xhigh": {
-              "reasoningEffort": "xhigh",
-              "textVerbosity": "low",
-              "reasoningSummary": "auto"
-            },
-            "high": {
-              "reasoningEffort": "high",
-              "textVerbosity": "low",
-              "reasoningSummary": "auto"
-            },
-            "medium": {
-              "reasoningEffort": "medium",
-              "textVerbosity": "low",
-              "reasoningSummary": "auto"
-            },
-            "low": {
-              "reasoningEffort": "low",
-              "textVerbosity": "low",
-              "reasoningSummary": "auto"
-            }
+            "low": {},
+            "medium": {},
+            "high": {},
+            "xhigh": {}
+          }
+        },
+        "gpt-5.3": {
+          "name": "GPT-5.3",
+          "limit": {
+            "context": 400000,
+            "output": 128000
+          },
+          "options": {
+            "store": false
+          },
+          "variants": {
+            "low": {},
+            "medium": {},
+            "high": {},
+            "xhigh": {}
+          }
+        },
+        "gpt-5.3-codex": {
+          "name": "GPT-5.3 Codex",
+          "limit": {
+            "context": 400000,
+            "output": 128000
+          },
+          "options": {
+            "store": false
+          },
+          "variants": {
+            "low": {},
+            "medium": {},
+            "high": {},
+            "xhigh": {}
+          }
+        },
+        "gpt-5.4-mini": {
+          "name": "GPT-5.4 Mini",
+          "limit": {
+            "context": 400000,
+            "output": 128000
+          },
+          "options": {
+            "store": false
+          },
+          "variants": {
+            "low": {},
+            "medium": {},
+            "high": {},
+            "xhigh": {}
           }
         }
       }
     }
-  }
+  },
+  "agent": {
+    "build": {
+      "options": {
+        "store": false
+      }
+    },
+    "plan": {
+      "options": {
+        "store": false
+      }
+    }
+  },
+  "$schema": "https://opencode.ai/config.json"
 }`}
                             </pre>
                           </div>
@@ -760,6 +848,23 @@ GEMINI_MODEL=gemini-3-pro-preview`}
               </div>
             </GlowCard>
           </div>
+        </div>
+
+        <div
+          aria-live="polite"
+          className={`fixed left-1/2 bottom-6 z-50 -translate-x-1/2 rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
+            copyFeedback
+              ? "pointer-events-auto translate-y-0 opacity-100"
+              : "pointer-events-none translate-y-2 opacity-0"
+          }`}
+          style={{
+            backgroundColor: 'var(--background-raised)',
+            color: 'var(--foreground)',
+            border: '1px solid var(--border)',
+            boxShadow: 'var(--shadow-soft)',
+          }}
+        >
+          {copyFeedback}
         </div>
       </div>
     </section>
