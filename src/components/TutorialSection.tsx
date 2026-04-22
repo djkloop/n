@@ -1,43 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { copyToClipboard as copyText } from "@/lib/copyToClipboard";
 import { GlowCard } from "./GlowCard";
-
-function fallbackCopyText(text: string) {
-const textArea = document.createElement("textarea");
- textArea.value = text;
- textArea.setAttribute("readonly", "true");
- textArea.style.position = "fixed";
- textArea.style.top = "-9999px";
- textArea.style.left = "-9999px";
- document.body.appendChild(textArea);
- textArea.focus();
- textArea.select();
-
- try {
- return document.execCommand("copy");
- } finally {
- document.body.removeChild(textArea);
-}
-}
-
-function canUseClipboardApi() {
-if (!navigator.clipboard?.writeText) {
-return false;
-}
-
- const permissionsPolicy = (
- document as Document & {
- permissionsPolicy?: { allowsFeature?: (feature: string) => boolean };
- }
- ).permissionsPolicy;
-
- if (permissionsPolicy?.allowsFeature) {
- return permissionsPolicy.allowsFeature("clipboard-write");
- }
-
- return true;
-}
 
 export function TutorialSection() {
   const [activeTab, setActiveTab] = useState("claude-code");
@@ -112,11 +77,9 @@ export function TutorialSection() {
 
 const copyToClipboard = async (text: string, step: number) => {
 try {
- if (canUseClipboardApi()) {
- await navigator.clipboard.writeText(text);
- } else if (!fallbackCopyText(text)) {
- throw new Error("fallback copy failed");
- }
+ if (!(await copyText(text))) {
+throw new Error("fallback copy failed");
+}
 setCopiedStep(step);
 setCopyFeedback("复制成功");
       setTimeout(() => setCopiedStep(null), 2000);
