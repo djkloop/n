@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { HeroFlowVisualization } from "./HeroFlowVisualization";
-import buildInfo from "@/generated/build-info.json";
+import packageJson from "../../package.json";
 
 function HeroFlowSkeleton() {
   return (
@@ -137,9 +137,9 @@ export function HeroSection() {
  className="h-1 w-1 rounded-full"
  style={{ backgroundColor: "var(--foreground-muted)", opacity:0.4 }}
  />
- <span className="tracking-[0.18em] opacity-80">v{buildInfo.buildVersion}</span>
- </span>
- </div>
+ <span className="tracking-[0.18em] opacity-80">v{packageJson.version}</span>
+</span>
+</div>
 
           <div
             className={`transition-all duration-1200 delay-200 ease-[cubic-bezier(0.32,0.72,0,1)] ${
