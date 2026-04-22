@@ -3,6 +3,24 @@
 import { useState } from "react";
 import { GlowCard } from "./GlowCard";
 
+function fallbackCopyText(text: string) {
+ const textArea = document.createElement("textarea");
+ textArea.value = text;
+ textArea.setAttribute("readonly", "true");
+ textArea.style.position = "fixed";
+ textArea.style.top = "-9999px";
+ textArea.style.left = "-9999px";
+ document.body.appendChild(textArea);
+ textArea.focus();
+ textArea.select();
+
+ try {
+ return document.execCommand("copy");
+ } finally {
+ document.body.removeChild(textArea);
+ }
+}
+
 export function TutorialSection() {
   const [activeTab, setActiveTab] = useState("claude-code");
   const [activePlatform, setActivePlatform] = useState("windows");
@@ -76,7 +94,11 @@ export function TutorialSection() {
 
   const copyToClipboard = async (text: string, step: number) => {
     try {
-      await navigator.clipboard.writeText(text);
+ if (navigator.clipboard?.writeText) {
+ await navigator.clipboard.writeText(text);
+ } else if (!fallbackCopyText(text)) {
+ throw new Error("fallback copy failed");
+ }
       setCopiedStep(step);
       setCopyFeedback("复制成功");
       setTimeout(() => setCopiedStep(null), 2000);

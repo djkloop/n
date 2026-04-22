@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { HeroFlowVisualization } from "./HeroFlowVisualization";
+import buildInfo from "@/generated/build-info.json";
 
 function HeroFlowSkeleton() {
   return (
@@ -122,18 +123,23 @@ export function HeroSection() {
 
       <div className="relative z-10 mx-auto w-full max-w-[1400px] px-4 py-20 md:px-8 md:py-32 lg:px-12">
         <div>
-          <div
-            className={`transition-all duration-1200 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-              mounted ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-            }`}
-          >
-            <span
-              className="mb-10 inline-block rounded-full border px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.25em] md:mb-14"
-              style={{ borderColor: "var(--border)", color: "var(--foreground-muted)" }}
-            >
-              CyberTruckAI
-            </span>
-          </div>
+ <div
+ className={`transition-all duration-1200 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+ mounted ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+ }`}
+ >
+ <span
+ className="mb-10 inline-flex items-center gap-3 rounded-full border px-4 py-1.5 text-[10px] font-medium md:mb-14"
+ style={{ borderColor: "var(--border)", color: "var(--foreground-muted)" }}
+ >
+ <span className="uppercase tracking-[0.25em]">CyberTruckAI</span>
+ <span
+ className="h-1 w-1 rounded-full"
+ style={{ backgroundColor: "var(--foreground-muted)", opacity:0.4 }}
+ />
+ <span className="tracking-[0.18em] opacity-80">v{buildInfo.buildVersion}</span>
+ </span>
+ </div>
 
           <div
             className={`transition-all duration-1200 delay-200 ease-[cubic-bezier(0.32,0.72,0,1)] ${
