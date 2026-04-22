@@ -4,7 +4,7 @@ import { useState } from "react";
 import { GlowCard } from "./GlowCard";
 
 function fallbackCopyText(text: string) {
- const textArea = document.createElement("textarea");
+const textArea = document.createElement("textarea");
  textArea.value = text;
  textArea.setAttribute("readonly", "true");
  textArea.style.position = "fixed";
@@ -18,7 +18,25 @@ function fallbackCopyText(text: string) {
  return document.execCommand("copy");
  } finally {
  document.body.removeChild(textArea);
+}
+}
+
+function canUseClipboardApi() {
+if (!navigator.clipboard?.writeText) {
+return false;
+}
+
+ const permissionsPolicy = (
+ document as Document & {
+ permissionsPolicy?: { allowsFeature?: (feature: string) => boolean };
  }
+ ).permissionsPolicy;
+
+ if (permissionsPolicy?.allowsFeature) {
+ return permissionsPolicy.allowsFeature("clipboard-write");
+ }
+
+ return true;
 }
 
 export function TutorialSection() {
@@ -92,15 +110,15 @@ export function TutorialSection() {
     }
   };
 
-  const copyToClipboard = async (text: string, step: number) => {
-    try {
- if (navigator.clipboard?.writeText) {
+const copyToClipboard = async (text: string, step: number) => {
+try {
+ if (canUseClipboardApi()) {
  await navigator.clipboard.writeText(text);
  } else if (!fallbackCopyText(text)) {
  throw new Error("fallback copy failed");
  }
-      setCopiedStep(step);
-      setCopyFeedback("复制成功");
+setCopiedStep(step);
+setCopyFeedback("复制成功");
       setTimeout(() => setCopiedStep(null), 2000);
       setTimeout(() => setCopyFeedback(null), 2000);
     } catch {
