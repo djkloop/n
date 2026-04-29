@@ -10,8 +10,8 @@ export default function Home() {
  <main className="min-h-screen bg-[var(--background)] overflow-x-hidden">
  <div className="grain-overlay" />
  <HeroSection />
- <FeaturesSection />
  <ContactSection />
+ <FeaturesSection />
  <TutorialSection />
  <PricingSection />
  <TestimonialsSection />
