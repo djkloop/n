@@ -83,7 +83,7 @@ export function ContactSection() {
       name: "微信群",
       description: "扫码加入微信群，获取最新资讯",
       icon: <WeChatIcon />,
-      placeholder: "/qr-wechat.png",
+      placeholder: "/qr-wechat.jpg",
       recommended: true,
     },
     {
