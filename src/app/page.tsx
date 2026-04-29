@@ -3,6 +3,7 @@ import { FeaturesSection } from "@/components/FeaturesSection";
 import { TutorialSection } from "@/components/TutorialSection";
 import { PricingSection } from "@/components/PricingSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { ContactSection } from "@/components/ContactSection";
 
 export default function Home() {
  return (
@@ -10,6 +11,7 @@ export default function Home() {
  <div className="grain-overlay" />
  <HeroSection />
  <FeaturesSection />
+ <ContactSection />
  <TutorialSection />
  <PricingSection />
  <TestimonialsSection />
