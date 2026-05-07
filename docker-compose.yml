@@ -3,6 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_GIT_SHA: ${NEXT_PUBLIC_GIT_SHA:-local}
     container_name: cybertruckai-pages
     restart: unless-stopped
     ports:

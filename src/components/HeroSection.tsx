@@ -5,6 +5,8 @@ import { motion } from "motion/react";
 import { HeroFlowVisualization } from "./HeroFlowVisualization";
 import packageJson from "../../package.json";
 
+const gitSha = process.env.NEXT_PUBLIC_GIT_SHA?.trim() || "local";
+
 function HeroFlowSkeleton() {
   return (
     <div className="relative h-[320px] w-[560px]">
@@ -137,7 +139,7 @@ export function HeroSection() {
  className="h-1 w-1 rounded-full"
  style={{ backgroundColor: "var(--foreground-muted)", opacity:0.4 }}
  />
- <span className="tracking-[0.18em] opacity-80">v{packageJson.version}</span>
+ <span className="tracking-[0.18em] opacity-80">v{packageJson.version} · {gitSha}</span>
 </span>
 </div>
 

@@ -6,6 +6,12 @@
 docker compose up -d --build
 ```
 
+## 服务器一键更新
+
+```bash
+bash /opt/1panel/apps/cybertruckai-pages/deploy.sh
+```
+
 ## 访问
 
 ```text
