@@ -203,6 +203,25 @@ export function HeroSection() {
                 获取 API Key
               </a>
             </div>
+
+            <a
+              href="https://qm.qq.com/q/LyE0SvP0sw"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+              style={{ borderColor: "var(--border)", color: "var(--foreground-muted)" }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "var(--primary)";
+                e.currentTarget.style.color = "var(--foreground)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "var(--border)";
+                e.currentTarget.style.color = "var(--foreground-muted)";
+              }}
+            >
+              <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "var(--primary)" }} />
+              QQ 群 214778070
+            </a>
           </div>
         </div>
 
