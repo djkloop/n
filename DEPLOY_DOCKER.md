@@ -12,6 +12,26 @@ docker compose up -d --build
 bash /opt/1panel/apps/cybertruckai-pages/deploy.sh
 ```
 
+## 带版本升级部署
+
+补丁版本：
+
+```bash
+bash /opt/1panel/apps/cybertruckai-pages/deploy.sh patch
+```
+
+次版本：
+
+```bash
+bash /opt/1panel/apps/cybertruckai-pages/deploy.sh minor
+```
+
+主版本：
+
+```bash
+bash /opt/1panel/apps/cybertruckai-pages/deploy.sh major
+```
+
 ## 访问
 
 ```text
