@@ -11,7 +11,7 @@ git pull
 if [[ "$RELEASE_TYPE" != "none" ]]; then
   case "$RELEASE_TYPE" in
     patch|minor|major)
-      pnpm "bump:$RELEASE_TYPE"
+      node scripts/bump-version.mjs "$RELEASE_TYPE"
       git add package.json package-lock.json pnpm-lock.yaml
       git commit -m "release: bump $RELEASE_TYPE version"
       git push
